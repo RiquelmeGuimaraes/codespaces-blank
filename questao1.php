@@ -42,6 +42,36 @@
 
             <input type="submit" value="Gerar elemento(s)">
         </form>
+
+        <?php
+        function gerarElemento($tipo)
+        {
+            switch ($tipo) {
+                case 'caixa-texto':
+                    return '<input type="text" name="caixa-texto1">';
+                case 'senha':
+                    return '<input type="password" name="senha1">';
+                case 'radio':
+                    return '<input type="radio" name="radio1"> <label for="radio1">Radio</label>';
+                case 'caixa-selecao':
+                    return '<select name="caixa-selecao">'
+                        . '<option value="opcao1">opção 1</option>'
+                        . '<option value="opcao2">opção 2</option>'
+                        . '</select>';
+                case 'faixa':
+                    return '<input type="range" name="faixa" min = "0" max = "100">';
+                case 'botao':
+                    return '<input type="button" name="button" value="Botão">';
+            }
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $totalElementos = intval($_POST['totalElementos']);
+            $elementoSelecionado = $_POST['elementoSelecionado'];
+            $totalElementos = min(15, max(1, $totalElementos));
+        }
+        ?>
+
         <a class="index" href="index.html">Página Inicial</a><br><br>
     </main>
     <footer>
