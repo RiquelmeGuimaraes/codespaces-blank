@@ -52,6 +52,9 @@
 
         <a href="index.html">Página Inicial</a>
     </main>
+    <footer>
+        <p>Riquelme & Vitória - &copy;2023</p>
+    </footer>
 </body>
 
 </html>
