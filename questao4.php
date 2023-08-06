@@ -37,6 +37,44 @@
 
             <input type="submit" value="Calcular">
         </form><br>
+
+        <?php
+        function calcularInvestimento($valorInicial, $aporteMensal, $taxaRendimentoMensal)
+        {
+            $rendimentoMensal = ($valorInicial + $aporteMensal) * ($taxaRendimentoMensal / 100);
+            $total = $valorInicial + $aporteMensal + $rendimentoMensal;
+            return array($rendimentoMensal, $total);
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $valorInicial = floatval(str_replace(',', '.', $_POST['valorInicial']));
+            //intval está sendo utilizado para converter um valor em um número inteiro
+            $meses = intval($_POST['meses']);
+            //floatval está sendo utilizado para converter um valor em um número com casas decimais
+            $taxaRendimentoMensal = floatval(str_replace(',', '.', $_POST['taxaRendimentoMensal']));
+            $aporteMensal = floatval(str_replace(',', '.', $_POST['aporteMensal']));
+
+            $valorInicial = min(999999.99, max(0, $valorInicial));
+            $meses = min(480, max(1, $meses));
+            $taxaRendimentoMensal = min(20, max(0, $taxaRendimentoMensal));
+            $aporteMensal = min(999999.99, max(0, $aporteMensal));
+
+            $dadosInvestimento = array();
+            $valorAtual = $valorInicial;
+            for ($mes = 1; $mes <= $meses; $mes++) {
+                $aporte = ($mes === 1) ? 0 : $aporteMensal;
+                list($rendimentoMensal, $total) = calcularInvestimento($valorAtual, $aporte, $taxaRendimentoMensal);
+                $dadosInvestimento[] = array(
+                    'mes' => $mes,
+                    'valorInicial' => number_format($valorAtual, 2, ',', '.'),
+                    'aporteMensal' => number_format($aporte, 2, ',', '.'),
+                    'rendimentoMensal' => number_format($rendimentoMensal, 2, ',', '.'),
+                    'total' => number_format($total, 2, ',', '.')
+                );
+                $valorAtual = $total;
+            }
+        }
+        ?>
     </main>
 </body>
 
