@@ -1,0 +1,17 @@
+a {
+    font-family: roboto;
+}
+
+header {
+    background-color: grey;
+}
+
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    background-color: black;
+}
+
+footer {
+    background-color: grey;
+}
