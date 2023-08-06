@@ -155,7 +155,7 @@
         <a class="index" href="index.html">Página Inicial</a><br><br>
     </main>
     <footer>
-        Riquelme & Vitória - &copy;2023
+        <p>Riquelme & Vitória - &copy;2023</p>
     </footer>
 </body>
 

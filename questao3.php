@@ -19,5 +19,8 @@
     <a href="questao03.php">Cancelar</a><br>
     <a href="index.html">Página Inicial</a>
 </body>
+<footer>
+    <p>Riquelme & Vitória - &copy;2023</p>
+</footer>
 
 </html>
