@@ -100,6 +100,8 @@
         <?php endif; ?>
 
         <br><br>
+
+        <a class="index" href="index.html">Página Inicial</a><br><br>
     </main>
 </body>
 
