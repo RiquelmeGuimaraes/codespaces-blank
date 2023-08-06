@@ -75,6 +75,31 @@
             }
         }
         ?>
+
+        <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($dadosInvestimento)) : ?>
+
+            <table class="tabela4">
+                <tr>
+                    <th>Mês</th>
+                    <th>Valor Inicial</th>
+                    <th>Aporte Mensal</th>
+                    <th>Rendimento</th>
+                    <th>Total</th>
+                </tr>
+                <?php foreach ($dadosInvestimento as $dados) : ?>
+
+                    <tr>
+                        <td><?php echo $dados['mes']; ?></td>
+                        <td><?php echo 'R$ ' . $dados['valorInicial'] ?></td>
+                        <td><?php echo 'R$ ' . $dados['aporteMensal'] ?></td>
+                        <td><?php echo 'R$ ' . $dados['rendimentoMensal'] ?></td>
+                        <td><?php echo 'R$ ' . $dados['total'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        <?php endif; ?>
+
+        <br><br>
     </main>
 </body>
 
