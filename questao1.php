@@ -72,6 +72,26 @@
         }
         ?>
 
+        <?php if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($elementoSelecionado)) : ?>
+
+            <h3>Exemplos gerados:</h3>
+
+            <?php
+            for ($i = 0; $i < $totalElementos; $i++) {
+                echo '<div class="exemplo-gerado">' . gerarElemento($elementoSelecionado) . '</div>';
+            }
+            ?>
+
+            <h3>Código fonte do exmplo:</h3>
+            <pre>
+            <?php
+            echo htmlentities('<input type="' . $elementoSelecionado . '" name="' . $elementoSelecionado . '">');
+            ?>
+        </pre>
+        <?php endif ?>
+
+        <br><br>
+
         <a class="index" href="index.html">Página Inicial</a><br><br>
     </main>
     <footer>
